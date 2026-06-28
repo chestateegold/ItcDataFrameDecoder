@@ -1,0 +1,11 @@
+[project]
+name = "itc-data-frame-decoder"
+version = "0.1.0"
+description = "ITC data frame switch and signal decoder"
+requires-python = ">=3.9"
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

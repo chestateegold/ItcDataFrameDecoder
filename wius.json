@@ -1,0 +1,2276 @@
+{
+  "version": "1.0",
+  "description": "Auto-generated + merged WIU decoders",
+  "waysides": {
+    "694760598520": {
+      "name": "",
+      "sig": "UNK",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "707110560093": {
+      "name": "",
+      "sig": "UNK",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707124034093": {
+      "name": "",
+      "sig": "UNK",
+      "ind": [
+        {"switch": "1"}
+      ]
+    },
+    "707630646789": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645237861": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "707645500005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "707645500505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "707645501505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"switch": "5"},
+        {"switch": "6"},
+        {"switch": "7"},
+        {"switch": "8"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"},
+        {"signal": "6"}
+      ]
+    },
+    "707645502005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645502006": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645502007": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645502505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"switch": "5"},
+        {"switch": "6"},
+        {"switch": "7"},
+        {"switch": "8"},
+        {"switch": "9"},
+        {"switch": "10"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "707645503005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645503006": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645503007": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645503505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"switch": "5"},
+        {"switch": "6"},
+        {"switch": "7"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "707645504005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "707645504505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645505000": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645505005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645505505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645505805": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "707645506005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645506505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "707645507005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645507505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645508005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "707645508505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645509005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645509505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645510005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645510805": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645511005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645512005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645527005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707645527006": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647413005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647413505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647414005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647414505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647415005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647415505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647416005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "707647416505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647417505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647418205": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647418305": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647418505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647419005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647419505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647420305": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647420505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "707647421005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707647421505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647422005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647422505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647423005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"}
+      ]
+    },
+    "707647423505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647424005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647424505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"}
+      ]
+    },
+    "707647425005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647425605": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647426005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647429005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "707647429505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"},
+        {"signal": "6"}
+      ]
+    },
+    "707647430005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "707647430505": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "707647431005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "707660905005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"}
+      ]
+    },
+    "707660907005": {
+      "name": "",
+      "sig": "BNSF",
+      "ind": [
+        {"switch": "1"}
+      ]
+    },
+    "708182368297": {
+      "name": "",
+      "sig": "UNK",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"switch": "5"},
+        {"switch": "6"},
+        {"switch": "7"},
+        {"switch": "8"},
+        {"switch": "9"},
+        {"switch": "10"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "708197771821": {
+      "name": "",
+      "sig": "UNK",
+      "ind": [
+        {"switch": "1"}
+      ]
+    },
+    "780208500103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "780208500203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780208500303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780208500403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"}
+      ]
+    },
+    "780211700203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211700403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211700503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211701103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211701203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211701503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211701603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211701703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211701803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211701903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211702003": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211702103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211702203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211702303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211702403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211702503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211702803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211703103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211703203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211703303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211703403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211703603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211703703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211703803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211703903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "780211704003": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211704103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211704203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "780211704303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "780211704403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "780211704503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211704603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "780211704703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211704803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211704903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "780211705003": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211705103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "780211705203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211705303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211705403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"}
+      ]
+    },
+    "780211705503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211705603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211705703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780211705803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211705903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211706103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "780211706203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780211706303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "780211799247": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"switch": "5"},
+        {"switch": "6"},
+        {"switch": "7"},
+        {"switch": "8"},
+        {"switch": "9"},
+        {"signal": "1"}
+      ]
+    },
+    "780211799503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "780211799703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "780217700504": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"}
+      ]
+    },
+    "780217700603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217700604": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217700703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"},
+        {"signal": "6"}
+      ]
+    },
+    "780217700803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217700804": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217700903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217700904": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217701503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"}
+      ]
+    },
+    "780217701504": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"}
+      ]
+    },
+    "780217701603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217701604": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217701703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"switch": "5"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"},
+        {"signal": "6"},
+        {"signal": "7"}
+      ]
+    },
+    "780217701803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "780217701903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217701904": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217702003": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217702004": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217702103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217702104": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217702204": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780217702303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"}
+      ]
+    },
+    "780217702304": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217702403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"}
+      ]
+    },
+    "780217702404": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"}
+      ]
+    },
+    "780217702503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"}
+      ]
+    },
+    "780217702504": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780217713803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "780217713804": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217714003": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "780217714103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"},
+        {"signal": "6"}
+      ]
+    },
+    "780217714203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"},
+        {"signal": "6"}
+      ]
+    },
+    "780217714303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"}
+      ]
+    },
+    "780217714403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217714503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "780217714603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217715103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780217715203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780217715303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217715403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217715503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"}
+      ]
+    },
+    "780217715603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217715803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217715903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"}
+      ]
+    },
+    "780217716003": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "780217716103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780217716203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "780217716303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "780217716403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780217716503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780217716603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780217716703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "780217716803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221900103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"switch": "5"},
+        {"switch": "6"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"},
+        {"signal": "6"}
+      ]
+    },
+    "780221900203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221900303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"switch": "5"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"},
+        {"signal": "6"},
+        {"signal": "7"},
+        {"signal": "8"},
+        {"signal": "9"},
+        {"signal": "10"},
+        {"signal": "11"}
+      ]
+    },
+    "780221900403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"},
+        {"signal": "6"}
+      ]
+    },
+    "780221900503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"switch": "5"},
+        {"switch": "6"},
+        {"switch": "7"},
+        {"switch": "8"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"},
+        {"signal": "5"},
+        {"signal": "6"},
+        {"signal": "7"}
+      ]
+    },
+    "780221900603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "780221900703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221900803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221900903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221901003": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"}
+      ]
+    },
+    "780221901103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221901203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221901303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221901403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221901503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221901603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221901703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221901803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221901903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221902003": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221902103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221902203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221902303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221902403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221902503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221902603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221902703": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221902803": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221902903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221903003": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221903103": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221903203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780221904903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"}
+      ]
+    },
+    "780221905903": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"}
+      ]
+    },
+    "780221906603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780221907403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780230701503": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780230701504": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780230701603": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"},
+        {"signal": "4"}
+      ]
+    },
+    "780230702203": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780230702204": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    },
+    "780287057303": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"bit": "u"},
+        {"switch": "1"},
+        {"switch": "2"},
+        {"switch": "3"},
+        {"switch": "4"},
+        {"signal": "1"},
+        {"signal": "2"}
+      ]
+    },
+    "780287057403": {
+      "name": "",
+      "sig": "UP",
+      "ind": [
+        {"switch": "1"},
+        {"switch": "2"},
+        {"signal": "1"},
+        {"signal": "2"},
+        {"signal": "3"}
+      ]
+    }
+  }
+}
