@@ -1,3 +1,5 @@
+import pytest
+
 from itc_data_frame_decoder import parse_switches_and_signals
 
 
@@ -47,3 +49,8 @@ def test_hex_string_input():
 
     assert result["success"] == "yes"
     assert result["results"] == {"switches": "0", "signals": "2"}
+
+
+def test_non_string_input_rejected():
+    with pytest.raises(TypeError, match="data_hex must be a hex string"):
+        parse_switches_and_signals("076", 0x7600)

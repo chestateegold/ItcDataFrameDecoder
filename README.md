@@ -4,11 +4,11 @@ Decodes ITC (Interoperable Train Control) packets to determine switch and signal
 
 ## Algorithm
 
-The decoder performs an exhaustive sweep to discover how many switches and signals are encoded in a variable-length binary payload. Switches occupy 2 bits each (`01` = normal, `10` = reversed); signals occupy 5 bits each (railroad-specific aspect codes). The boundary between them is not explicitly marked — the algorithm finds it by validating both sides simultaneously.
+The decoder performs an exhaustive sweep to discover how many switches and signals are encoded in a variable-length binary payload. Switches occupy 2 bits each (`01` = normal, `10` = reversed); signals occupy 5 bits each (railroad-specific aspect codes). The boundary between them is not explicitly marked; the algorithm finds it by validating both sides simultaneously.
 
-1. **Validate(s)** — Given a candidate switch count `s`, verify all switch bits are `01`/`10`, then parse the remaining bits as 5-bit signal groups (reversing each group for railroads that require it). Every non-zero signal value must match the railroad's known aspect codes. Returns the signal count, or `None` if either side fails.
-2. **Exhaustive sweep** — Try every possible switch count from `0` to `max_s` (total bits ÷ 2). Collect all valid `(switches, signals)` pairs.
-3. **Result** — Exactly 1 valid pair → `"yes"` with the counts. Zero pairs → `"no"`. Multiple pairs → `"ambiguous"`.
+1. **Validate(s)** - Given a candidate switch count `s`, verify all switch bits are `01`/`10`, then parse the remaining bits as 5-bit signal groups (reversing each group for railroads that require it). Every non-zero signal value must match the railroad's known aspect codes. Trailing `0` bits that do not complete a final 5-bit signal group are treated as expected byte padding. Returns the signal count, or `None` if either side fails.
+2. **Exhaustive sweep** - Try every possible switch count from `0` to `max_s` (total bits / 2). Collect all valid `(switches, signals)` pairs.
+3. **Result** - Exactly 1 valid pair -> `"yes"` with the counts. Zero pairs -> `"no"`. Multiple pairs -> `"ambiguous"`.
 
 ## Install
 
@@ -24,7 +24,7 @@ The project has three distinct layers:
 
 | Layer | Module | Concern |
 |---|---|---|
-| Decoder | `switch_signal_decoder.py` | Pure algorithm — given a hex payload and railroad, returns switch/signal counts |
+| Decoder | `switch_signal_decoder.py` | Pure algorithm - given a payload hex string and railroad, returns switch/signal counts |
 | Trial process | `wiu_resolver.py` | Groups packets by WIU, deduplicates, tries each unique data payload, applies success hierarchy |
 | I/O shell | `cli.py` | Reads hex file, parses frames, delegates to resolver, writes CSV |
 
@@ -32,7 +32,7 @@ The project has three distinct layers:
 
 ### Decode packets
 
-Reads plain hex ITC packets (one per line, min 26 hex chars) and outputs a CSV with switch/signal results grouped by WIU address. Packets for railroads not in the config are skipped.
+Reads plain hex ITC packets (one per line, min 26 hex chars) and outputs a CSV with switch/signal results grouped by WIU address. Packets are assumed to already be in the expected ITC frame format; this PoC does not perform frame validation beyond extracting the fixed fields it needs. Packets for railroads not in the config are skipped.
 
 ```sh
 python -m itc_data_frame_decoder.cli packets.hex output.csv
@@ -53,7 +53,7 @@ Output CSV columns: `wiu_id, rr, success, switches, signals`
 | 780221900403 | 802 | yes | 4 | 6 |
 | 780221900603 | 802 | yes | 2 | 4 |
 
-**Result hierarchy per WIU:** If any packet returns `"yes"` → record as success. Otherwise if any returns `"ambiguous"` → record as ambiguous. Otherwise → `"no"`.
+**Result hierarchy per WIU:** If any packet returns `"yes"` -> record as success. Otherwise if any returns `"ambiguous"` -> record as ambiguous. Otherwise -> `"no"`.
 
 ## Python API
 
@@ -91,6 +91,9 @@ result = parse_switches_and_signals("076", "7600")
 
 result = parse_switches_and_signals("802", "5F80")
 # {"success": "ambiguous", "results": []}
+
+# Hex string input is required.
+# parse_switches_and_signals("076", 0x7600) -> TypeError
 ```
 
 ### WIU resolver
@@ -117,17 +120,17 @@ python -m pytest tests -v
 
 ## Project structure
 
-```
+```text
 itc_data_frame_decoder/
-├── __init__.py                  # package entry point
-├── cli.py                       # I/O shell: reads hex, writes CSV
-├── packet_parser.py             # ITC frame field extraction
-├── railroad_config.json         # BNSF (076) and UP (802) signal config
-├── switch_signal_decoder.py     # exhaustive sweep: hex → switch/signal counts
-└── wiu_resolver.py              # trial process: groups packets, applies hierarchy
+|-- __init__.py                  # package entry point
+|-- cli.py                       # I/O shell: reads hex, writes CSV
+|-- packet_parser.py             # ITC frame field extraction
+|-- railroad_config.json         # BNSF (076) and UP (802) signal config
+|-- switch_signal_decoder.py     # exhaustive sweep: hex -> switch/signal counts
+`-- wiu_resolver.py              # trial process: groups packets, applies hierarchy
 tests/
-├── test_packet_parser.py        # frame parser tests
-├── test_switch_signal_decoder.py # decoder algorithm tests
-└── test_wiu_resolver.py         # resolver, hierarchy, and CLI integration tests
+|-- test_packet_parser.py        # frame parser tests
+|-- test_switch_signal_decoder.py # decoder algorithm tests
+`-- test_wiu_resolver.py         # resolver, hierarchy, and CLI integration tests
 packets.hex                      # example deduplicated packet data
 ```

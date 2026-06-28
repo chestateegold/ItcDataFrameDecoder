@@ -1,13 +1,16 @@
 import json
 from pathlib import Path
-from typing import Optional, Union
+from typing import Optional
 
 _config_path = Path(__file__).parent / "railroad_config.json"
 with open(_config_path) as _f:
     _RAILROAD_CONFIGS = json.load(_f)
 
 
-def parse_switches_and_signals(rr: str, data: Union[str, int]) -> dict:
+def parse_switches_and_signals(rr: str, data_hex: str) -> dict:
+    if not isinstance(data_hex, str):
+        raise TypeError("data_hex must be a hex string")
+
     rr_config = next((c for c in _RAILROAD_CONFIGS if c["rr"] == rr), None)
     if rr_config is None:
         return {"success": "no", "results": []}
@@ -16,7 +19,7 @@ def parse_switches_and_signals(rr: str, data: Union[str, int]) -> dict:
     reverse_signal_bits = rr_config["reverseSignalBits"]
     valid_signal_set = {int(k) for k in rr_config["signals"].keys()}
 
-    hex_str = data if isinstance(data, str) else hex(data)[2:]
+    hex_str = data_hex.upper()
     bit_str = "".join(
         bin(int(ch, 16))[2:].zfill(4) for ch in hex_str
     )

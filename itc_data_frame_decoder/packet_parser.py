@@ -26,7 +26,6 @@ def parse_packet(packet_hex: str) -> Optional[dict]:
         "metadata_hex": hex_str[20:26],
         "data_hex": hex_str[26:],
         "actual_length_bytes": len(hex_str) // 2,
-        "length_field_matches": int(hex_str[2:6], 16) == len(hex_str) // 2 + 2,
     }
 
 

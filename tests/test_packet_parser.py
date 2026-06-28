@@ -18,7 +18,6 @@ class TestPacketParser:
         assert packet["metadata_hex"] == "020C46"
         assert packet["data_hex"] == "9F7BCF"
         assert packet["actual_length_bytes"] == 16
-        assert packet["length_field_matches"] is True
 
     def test_parse_packet_too_short(self):
         packet = parse_packet("0000113300")
