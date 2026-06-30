@@ -3,6 +3,7 @@
             "rr": "076",
             "abbrev": "BNSF",
             "switchBytesFirst": true,
+            "switchInMotionBits": "00",
             "signals": {
                   "3": "Clear",
                   "4": "AprLtd",
@@ -17,13 +18,15 @@
                   "13": "Restrct",
                   "14": "StopGo",
                   "15": "Stop",
-                  "16": "DivAprClr50"
+                  "16": "DivAprClr50",
+                  "30": "Dark"
             }
       },
       {
             "rr": "802",
             "abbrev": "UP",
             "switchBytesFirst": true,
+            "switchInMotionBits": "00",
             "signals": {
                   "1": "DivAprLmtd",
                   "3": "Clear",
@@ -48,6 +51,7 @@
             "rr": "550",
             "abbrev": "NS",
             "switchBytesFirst": false,
+            "switchInMotionBits": "11",
             "signals": {
                   "1": "Clear1",
                   "2": "DivClr2",

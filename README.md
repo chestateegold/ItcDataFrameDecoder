@@ -45,15 +45,15 @@ Input example (`packets.hex`):
 4900163300B5A8D9667302031255F7BDEF78
 ```
 
-Output CSV columns: `wiu_id, rr, success, switches, signals`
+Output CSV columns: `wiu_id, rr, success, switches, signals, has_conflict`
 
-| wiu_id | rr | success | switches | signals |
-|---|---|---|---|---|
-| 707660905005 | 076 | yes | 1 | 0 |
-| 780221900403 | 802 | yes | 4 | 6 |
-| 780221900603 | 802 | yes | 2 | 4 |
+| wiu_id | rr | success | switches | signals | has_conflict |
+|---|---|---|---|---|---|
+| 707660905005 | 076 | yes | 1 | 0 | no |
+| 780221900403 | 802 | yes | 4 | 6 | no |
+| 780221900603 | 802 | yes | 2 | 4 | no |
 
-**Result hierarchy per WIU:** If any packet returns `"yes"` -> record as success. Otherwise if any returns `"ambiguous"` -> record as ambiguous. Otherwise -> `"no"`.
+**Result hierarchy per WIU:** Compare all packet-level `"yes"` decodes for the WIU. If there is exactly one unique successful `(switches, signals)` result, record it as `"yes"`. If there are multiple different successful decodes, record `"no"` and set `has_conflict` to `yes`. If there are no successful decodes but at least one packet is `"ambiguous"`, record `"ambiguous"`. Otherwise record `"no"`.
 
 ## Python API
 
@@ -110,8 +110,12 @@ results = resolve_wius([
     {"wiu_id": "780221900403", "rr": "802", "data_hex": "55F7BDEF78"},
 ])
 # {
-#   "707660905005": {"rr": "076", "success": "yes", "switches": "1", "signals": "0"},
-#   "780221900403": {"rr": "802", "success": "yes", "switches": "4", "signals": "6"},
+#   "707660905005": {
+#       "rr": "076", "success": "yes", "switches": "1", "signals": "0", "has_conflict": "no"
+#   },
+#   "780221900403": {
+#       "rr": "802", "success": "yes", "switches": "4", "signals": "6", "has_conflict": "no"
+#   },
 # }
 ```
 

@@ -33,9 +33,12 @@ def main():
     resolved = resolve_wius(packets)
 
     with open(args.output, "w", newline="") as f:
-        f.write("wiu_id,rr,success,switches,signals\n")
+        f.write("wiu_id,rr,success,switches,signals,has_conflict\n")
         for wiu_id, entry in sorted(resolved.items()):
-            f.write(f"{wiu_id},{entry['rr']},{entry['success']},{entry['switches']},{entry['signals']}\n")
+            f.write(
+                f"{wiu_id},{entry['rr']},{entry['success']},"
+                f"{entry['switches']},{entry['signals']},{entry['has_conflict']}\n"
+            )
 
 
 if __name__ == "__main__":

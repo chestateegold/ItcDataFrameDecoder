@@ -7,16 +7,27 @@ with open(_config_path) as _f:
     _RAILROAD_CONFIGS = json.load(_f)
 
 
-def parse_switches_and_signals(rr: str, data_hex: str) -> dict:
+def _get_rr_config(rr: str) -> Optional[dict]:
+    return next((c for c in _RAILROAD_CONFIGS if c["rr"] == rr), None)
+
+
+def decode_all_switch_signal_combinations(
+    rr: str, data_hex: str, allow_in_motion: bool = False
+) -> list[dict[str, str]]:
     if not isinstance(data_hex, str):
         raise TypeError("data_hex must be a hex string")
 
-    rr_config = next((c for c in _RAILROAD_CONFIGS if c["rr"] == rr), None)
+    rr_config = _get_rr_config(rr)
     if rr_config is None:
-        return {"success": "no", "results": []}
+        return []
 
     switch_bytes_first = rr_config["switchBytesFirst"]
     valid_signal_set = {int(k) for k in rr_config["signals"].keys()}
+    allowed_switch_pairs = {"01", "10"}
+    if allow_in_motion:
+        switch_in_motion_bits = rr_config.get("switchInMotionBits")
+        if switch_in_motion_bits:
+            allowed_switch_pairs.add(switch_in_motion_bits)
 
     hex_str = data_hex.upper()
     bit_str = "".join(
@@ -46,7 +57,7 @@ def parse_switches_and_signals(rr: str, data_hex: str) -> dict:
                 return set()
             for i in range(0, switch_bits, 2):
                 chunk = bit_str[i:i + 2]
-                if chunk not in ("01", "10"):
+                if chunk not in allowed_switch_pairs:
                     return set()
             signal_bits = bit_str[switch_bits:]
             signal_count = validate_signals(signal_bits)
@@ -69,7 +80,7 @@ def parse_switches_and_signals(rr: str, data_hex: str) -> dict:
             switch_bits_str = bit_str[switch_start:switch_end]
             for i in range(0, len(switch_bits_str), 2):
                 chunk = switch_bits_str[i:i + 2]
-                if chunk not in ("01", "10"):
+                if chunk not in allowed_switch_pairs:
                     break
             else:
                 padding_bits = bit_str[switch_end:]
@@ -86,13 +97,21 @@ def parse_switches_and_signals(rr: str, data_hex: str) -> dict:
         for signal_count in validate(s):
             valid_results.add((s, signal_count))
 
-    if len(valid_results) == 1:
-        switches, signals = next(iter(valid_results))
+    return [
+        {"switches": str(switches), "signals": str(signals)}
+        for switches, signals in sorted(valid_results)
+    ]
+
+
+def parse_switches_and_signals(rr: str, data_hex: str) -> dict:
+    possible_results = decode_all_switch_signal_combinations(rr, data_hex)
+
+    if len(possible_results) == 1:
         return {
             "success": "yes",
-            "results": {"switches": str(switches), "signals": str(signals)},
+            "results": possible_results[0],
+            "possible_results": possible_results,
         }
-    elif len(valid_results) == 0:
-        return {"success": "no", "results": []}
-    else:
-        return {"success": "ambiguous", "results": []}
+    if len(possible_results) == 0:
+        return {"success": "no", "results": [], "possible_results": []}
+    return {"success": "ambiguous", "results": [], "possible_results": possible_results}

@@ -12,16 +12,28 @@ def _load_configured_rrs() -> set[str]:
 
 
 def _apply_hierarchy(results: list[dict]) -> dict:
-    successes = [r for r in results if r["success"] == "yes"]
-    if successes:
-        first = successes[0]
-        return {"success": "yes", "switches": first["results"]["switches"], "signals": first["results"]["signals"]}
+    successful_decodes = {
+        (r["results"]["switches"], r["results"]["signals"])
+        for r in results
+        if r["success"] == "yes"
+    }
 
-    ambiguous = [r for r in results if r["success"] == "ambiguous"]
-    if ambiguous:
-        return {"success": "ambiguous", "switches": "", "signals": ""}
+    if len(successful_decodes) == 1:
+        switches, signals = next(iter(successful_decodes))
+        return {
+            "success": "yes",
+            "switches": switches,
+            "signals": signals,
+            "has_conflict": "no",
+        }
 
-    return {"success": "no", "switches": "", "signals": ""}
+    if len(successful_decodes) > 1:
+        return {"success": "no", "switches": "", "signals": "", "has_conflict": "yes"}
+
+    if any(r["success"] == "ambiguous" for r in results):
+        return {"success": "ambiguous", "switches": "", "signals": "", "has_conflict": "no"}
+
+    return {"success": "no", "switches": "", "signals": "", "has_conflict": "no"}
 
 
 def resolve_wius(packets: list[dict]) -> dict[str, dict]:

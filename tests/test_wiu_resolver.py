@@ -8,29 +8,51 @@ from itc_data_frame_decoder.wiu_resolver import (
 
 
 class TestApplyHierarchy:
-    def test_success_beats_ambiguous(self):
+    def test_matching_successes_return_yes(self):
         final = _apply_hierarchy([
-            {"success": "no", "results": []},
             {"success": "ambiguous", "results": []},
+            {"success": "yes", "results": {"switches": "1", "signals": "3"}},
             {"success": "yes", "results": {"switches": "1", "signals": "3"}},
         ])
 
-        assert final == {"success": "yes", "switches": "1", "signals": "3"}
+        assert final == {
+            "success": "yes",
+            "switches": "1",
+            "signals": "3",
+            "has_conflict": "no",
+        }
 
-    def test_ambiguous_beats_failed(self):
+    def test_conflicting_successes_return_no(self):
         final = _apply_hierarchy([
             {"success": "no", "results": []},
-            {"success": "ambiguous", "results": []},
+            {"success": "yes", "results": {"switches": "1", "signals": "3"}},
+            {"success": "yes", "results": {"switches": "3", "signals": "5"}},
         ])
 
-        assert final == {"success": "ambiguous", "switches": "", "signals": ""}
+        assert final == {"success": "no", "switches": "", "signals": "", "has_conflict": "yes"}
+
+    def test_ambiguous_without_successes(self):
+        final = _apply_hierarchy([
+            {"success": "ambiguous", "results": []},
+            {"success": "no", "results": []},
+        ])
+
+        assert final == {"success": "ambiguous", "switches": "", "signals": "", "has_conflict": "no"}
 
     def test_all_failed(self):
         final = _apply_hierarchy([
             {"success": "no", "results": []},
         ])
 
-        assert final == {"success": "no", "switches": "", "signals": ""}
+        assert final == {"success": "no", "switches": "", "signals": "", "has_conflict": "no"}
+
+    def test_success_ignores_failed_packets_if_successes_agree(self):
+        final = _apply_hierarchy([
+            {"success": "no", "results": []},
+            {"success": "yes", "results": {"switches": "1", "signals": "3"}},
+        ])
+
+        assert final == {"success": "yes", "switches": "1", "signals": "3", "has_conflict": "no"}
 
 
 class TestResolveWius:
@@ -40,7 +62,7 @@ class TestResolveWius:
         ])
 
         assert result["707660905005"] == {
-            "rr": "076", "success": "yes", "switches": "1", "signals": "0",
+            "rr": "076", "success": "yes", "switches": "1", "signals": "0", "has_conflict": "no",
         }
 
     def test_unknown_railroad_skipped(self):
@@ -55,9 +77,29 @@ class TestResolveWius:
             {"wiu_id": "707645511005", "rr": "076", "data_hex": "A5EF00"},
         ])
 
-        assert result["707645511005"]["success"] == "yes"
-        assert result["707645511005"]["switches"] == "1"
-        assert result["707645511005"]["signals"] == "3"
+        assert result["707645511005"] == {
+            "rr": "076", "success": "ambiguous", "switches": "", "signals": "", "has_conflict": "no",
+        }
+
+    def test_packet_failures_do_not_block_matching_success(self):
+        result = resolve_wius([
+            {"wiu_id": "707645500005", "rr": "076", "data_hex": "67DEF7BC"},
+            {"wiu_id": "707645500005", "rr": "076", "data_hex": "67CF7F9E"},
+        ])
+
+        assert result["707645500005"] == {
+            "rr": "076", "success": "yes", "switches": "3", "signals": "5", "has_conflict": "no",
+        }
+
+    def test_conflicting_successes_mark_conflict(self):
+        result = resolve_wius([
+            {"wiu_id": "707645500005", "rr": "076", "data_hex": "80"},
+            {"wiu_id": "707645500005", "rr": "076", "data_hex": "67DEF7BC"},
+        ])
+
+        assert result["707645500005"] == {
+            "rr": "076", "success": "no", "switches": "", "signals": "", "has_conflict": "yes",
+        }
 
 
 class TestCli:
@@ -80,7 +122,7 @@ class TestCli:
 
             lines = temp_output.read_text().strip().split("\n")
             assert len(lines) == 2
-            assert lines[0] == "wiu_id,rr,success,switches,signals"
+            assert lines[0] == "wiu_id,rr,success,switches,signals,has_conflict"
             assert lines[1].startswith("707660905005,076")
         finally:
             temp_input.unlink(missing_ok=True)
@@ -105,7 +147,7 @@ class TestCli:
 
             lines = temp_output.read_text().strip().split("\n")
             assert len(lines) == 1
-            assert lines[0] == "wiu_id,rr,success,switches,signals"
+            assert lines[0] == "wiu_id,rr,success,switches,signals,has_conflict"
         finally:
             temp_input.unlink(missing_ok=True)
             temp_output.unlink(missing_ok=True)
