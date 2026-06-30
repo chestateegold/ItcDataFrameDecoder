@@ -51,6 +51,25 @@ def test_hex_string_input():
     assert result["results"] == {"switches": "0", "signals": "2"}
 
 
+def test_up_80_is_ambiguous():
+    result = parse_switches_and_signals("802", "80")
+
+    assert result["success"] == "ambiguous"
+
+
+def test_ns_one_switch_two_signals():
+    result = parse_switches_and_signals("550", "10A0")
+
+    assert result["success"] == "ambiguous"
+
+
+def test_hex_string_input():
+    result = parse_switches_and_signals("550", "F7BDE8")
+
+    assert result["success"] == "yes"
+    assert result["results"] == {"switches": "1", "signals": "4"}
+
+
 def test_non_string_input_rejected():
     with pytest.raises(TypeError, match="data_hex must be a hex string"):
         parse_switches_and_signals("076", 0x7600)

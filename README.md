@@ -6,7 +6,7 @@ Decodes ITC (Interoperable Train Control) packets to determine switch and signal
 
 The decoder performs an exhaustive sweep to discover how many switches and signals are encoded in a variable-length binary payload. Switches occupy 2 bits each (`01` = normal, `10` = reversed); signals occupy 5 bits each (railroad-specific aspect codes). The boundary between them is not explicitly marked; the algorithm finds it by validating both sides simultaneously.
 
-1. **Validate(s)** - Given a candidate switch count `s`, verify all switch bits are `01`/`10`, then parse the remaining bits as 5-bit signal groups (reversing each group for railroads that require it). Every non-zero signal value must match the railroad's known aspect codes. Trailing `0` bits that do not complete a final 5-bit signal group are treated as expected byte padding. Returns the signal count, or `None` if either side fails.
+1. **Validate(s)** - Given a candidate switch count `s`, verify the switch side and signal side together. For railroads with `switchBytesFirst = true`, the decoder validates the first `s * 2` bits as switches, then parses the remainder as 5-bit signal groups. For railroads with `switchBytesFirst = false`, the decoder tries placing the `s * 2` switch bits at each boundary between complete 5-bit signal groups, and only accepts placements whose remaining suffix bits are all `0` byte-padding. Every non-zero signal value must match the railroad's known aspect codes. Returns the signal count, or `None` if either side fails.
 2. **Exhaustive sweep** - Try every possible switch count from `0` to `max_s` (total bits / 2). Collect all valid `(switches, signals)` pairs.
 3. **Result** - Exactly 1 valid pair -> `"yes"` with the counts. Zero pairs -> `"no"`. Multiple pairs -> `"ambiguous"`.
 
@@ -90,6 +90,9 @@ result = parse_switches_and_signals("076", "7600")
 # {"success": "yes", "results": {"switches": "0", "signals": "2"}}
 
 result = parse_switches_and_signals("802", "5F80")
+# {"success": "ambiguous", "results": []}
+
+result = parse_switches_and_signals("802", "80")
 # {"success": "ambiguous", "results": []}
 
 # Hex string input is required.
