@@ -4,11 +4,15 @@ Decodes ITC (Interoperable Train Control) packets to determine switch and signal
 
 ## Algorithm
 
-The decoder performs an exhaustive sweep to discover how many switches and signals are encoded in a variable-length binary payload. Switches occupy 2 bits each (`01` = normal, `10` = reversed); signals occupy 5 bits each (railroad-specific aspect codes). The boundary between them is not explicitly marked; the algorithm finds it by validating both sides simultaneously.
+The decoder performs an exhaustive sweep to discover how many switches and signals are encoded in a variable-length binary payload. Switches occupy 2 bits each; by default the valid switch states are `01` (normal) and `10` (reversed). Signals occupy 5 bits each (railroad-specific aspect codes). The boundary between them is not explicitly marked; the algorithm finds it by validating both sides simultaneously.
 
-1. **Validate(s)** - Given a candidate switch count `s`, verify the switch side and signal side together. For railroads with `switchBytesFirst = true`, the decoder validates the first `s * 2` bits as switches, then parses the remainder as 5-bit signal groups. For railroads with `switchBytesFirst = false`, the decoder tries placing the `s * 2` switch bits at each boundary between complete 5-bit signal groups, and only accepts placements whose remaining suffix bits are all `0` byte-padding. Every non-zero signal value must match the railroad's known aspect codes. Returns the signal count, or `None` if either side fails.
-2. **Exhaustive sweep** - Try every possible switch count from `0` to `max_s` (total bits / 2). Collect all valid `(switches, signals)` pairs.
-3. **Result** - Exactly 1 valid pair -> `"yes"` with the counts. Zero pairs -> `"no"`. Multiple pairs -> `"ambiguous"`.
+1. **Collect candidates** - Given a candidate switch count `s`, verify the switch side and signal side together.
+   - For railroads with `switchBytesFirst = true`, validate the first `s * 2` bits as switch pairs, then parse the remainder as 5-bit signal groups.
+   - For railroads with `switchBytesFirst = false`, try placing the `s * 2` switch bits at each boundary between complete 5-bit signal groups, and only accept placements whose remaining suffix bits are all `0` byte-padding.
+   - Every non-zero signal value must match the railroad's known aspect codes.
+2. **Exhaustive sweep** - Try every possible switch count from `0` to `max_s` (total bits / 2). Collect all valid `(switches, signals)` pairs and de-duplicate them by semantic result.
+3. **Strict vs relaxed mode** - The low-level decoder can optionally allow a railroad-configured transient switch state (`switchInMotionBits`) in addition to `01` and `10`. This is opt-in and intended for packet-level analysis/debugging.
+4. **Compatibility wrapper** - `parse_switches_and_signals(...)` collapses the candidate set into the legacy API shape: exactly 1 candidate -> `"yes"`, 0 -> `"no"`, more than 1 -> `"ambiguous"`.
 
 ## Install
 
@@ -24,8 +28,8 @@ The project has three distinct layers:
 
 | Layer | Module | Concern |
 |---|---|---|
-| Decoder | `switch_signal_decoder.py` | Pure algorithm - given a payload hex string and railroad, returns switch/signal counts |
-| Trial process | `wiu_resolver.py` | Groups packets by WIU, deduplicates, tries each unique data payload, applies success hierarchy |
+| Decoder | `switch_signal_decoder.py` | Pure algorithm - given a payload hex string and railroad, returns possible switch/signal decodes |
+| Trial process | `wiu_resolver.py` | Groups packets by WIU, evaluates packet-level decoder results, applies success hierarchy |
 | I/O shell | `cli.py` | Reads hex file, parses frames, delegates to resolver, writes CSV |
 
 ## CLI
@@ -53,7 +57,9 @@ Output CSV columns: `wiu_id, rr, success, switches, signals, has_conflict`
 | 780221900403 | 802 | yes | 4 | 6 | no |
 | 780221900603 | 802 | yes | 2 | 4 | no |
 
-**Result hierarchy per WIU:** Compare all packet-level `"yes"` decodes for the WIU. If there is exactly one unique successful `(switches, signals)` result, record it as `"yes"`. If there are multiple different successful decodes, record `"no"` and set `has_conflict` to `yes`. If there are no successful decodes but at least one packet is `"ambiguous"`, record `"ambiguous"`. Otherwise record `"no"`.
+**Result hierarchy per WIU:** Compare all packet-level strict `"yes"` decodes for the WIU. If there is exactly one unique successful `(switches, signals)` result, record it as `"yes"`. If there are multiple different successful decodes, re-run those packets in relaxed mode with the railroad-configured in-motion switch bits enabled and look for exactly one common candidate across the relaxed candidate sets. If that shared candidate exists, record it as `"yes"`. Otherwise record `"no"` and set `has_conflict` to `yes`. If there are no successful decodes but at least one packet is `"ambiguous"`, record `"ambiguous"`. Otherwise record `"no"`.
+
+**Known edge case:** If a WIU is represented by only a single packet and that packet was captured while a switch was actively being thrown, the resolver has no second packet to compare against when applying the relaxed reconciliation step. In that rare case the output may remain ambiguous or resolve to a less useful strict-only interpretation. This implementation intentionally does not try to solve that one-packet transitional-switch scenario.
 
 ## Python API
 
@@ -84,16 +90,43 @@ assert len(candidates) == 1
 ### Switch/signal decoding
 
 ```python
-from itc_data_frame_decoder import parse_switches_and_signals
+from itc_data_frame_decoder import (
+    decode_all_switch_signal_combinations,
+    parse_switches_and_signals,
+)
+
+candidates = decode_all_switch_signal_combinations("076", "23DEF7BC")
+# [{"switches": "0", "signals": "6"}]
+
+relaxed_candidates = decode_all_switch_signal_combinations(
+    "076", "23DEF7BC", allow_in_motion=True
+)
+# [{"switches": "0", "signals": "6"}, {"switches": "3", "signals": "5"}]
+
+# Relaxed mode uses the railroad-configured in-motion switch state
+# in addition to the normal switch states. This is used by the WIU
+# resolver as a reconciliation fallback when strict packet decodes conflict.
 
 result = parse_switches_and_signals("076", "7600")
-# {"success": "yes", "results": {"switches": "0", "signals": "2"}}
+# {
+#   "success": "yes",
+#   "results": {"switches": "0", "signals": "2"},
+#   "possible_results": [{"switches": "0", "signals": "2"}],
+# }
 
 result = parse_switches_and_signals("802", "5F80")
-# {"success": "ambiguous", "results": []}
+# {
+#   "success": "ambiguous",
+#   "results": [],
+#   "possible_results": [{"switches": "0", "signals": "2"}, {"switches": "1", "signals": "3"}],
+# }
 
 result = parse_switches_and_signals("802", "80")
-# {"success": "ambiguous", "results": []}
+# {
+#   "success": "ambiguous",
+#   "results": [],
+#   "possible_results": [{"switches": "0", "signals": "1"}, {"switches": "1", "signals": "0"}],
+# }
 
 # Hex string input is required.
 # parse_switches_and_signals("076", 0x7600) -> TypeError
@@ -105,16 +138,13 @@ result = parse_switches_and_signals("802", "80")
 from itc_data_frame_decoder.wiu_resolver import resolve_wius
 
 results = resolve_wius([
-    {"wiu_id": "707660905005", "rr": "076", "data_hex": "80"},
-    {"wiu_id": "707660905005", "rr": "076", "data_hex": "80"},
-    {"wiu_id": "780221900403", "rr": "802", "data_hex": "55F7BDEF78"},
+    {"wiu_id": "707645500005", "rr": "076", "data_hex": "67CF7F9E"},
+    {"wiu_id": "707645500005", "rr": "076", "data_hex": "23DEF7BC"},
+    {"wiu_id": "707645500005", "rr": "076", "data_hex": "03DEF7BC"},
 ])
 # {
-#   "707660905005": {
-#       "rr": "076", "success": "yes", "switches": "1", "signals": "0", "has_conflict": "no"
-#   },
-#   "780221900403": {
-#       "rr": "802", "success": "yes", "switches": "4", "signals": "6", "has_conflict": "no"
+#   "707645500005": {
+#       "rr": "076", "success": "yes", "switches": "3", "signals": "5", "has_conflict": "no"
 #   },
 # }
 ```
@@ -132,12 +162,12 @@ itc_data_frame_decoder/
 |-- __init__.py                  # package entry point
 |-- cli.py                       # I/O shell: reads hex, writes CSV
 |-- packet_parser.py             # ITC frame field extraction
-|-- railroad_config.json         # BNSF (076) and UP (802) signal config
-|-- switch_signal_decoder.py     # exhaustive sweep: hex -> switch/signal counts
+|-- railroad_config.json         # railroad signal config + optional in-motion switch bits
+|-- switch_signal_decoder.py     # exhaustive sweep: hex -> possible switch/signal decodes
 `-- wiu_resolver.py              # trial process: groups packets, applies hierarchy
 tests/
 |-- test_packet_parser.py        # frame parser tests
 |-- test_switch_signal_decoder.py # decoder algorithm tests
 `-- test_wiu_resolver.py         # resolver, hierarchy, and CLI integration tests
-packets.hex                      # example deduplicated packet data
+packets.hex                      # example packet data
 ```

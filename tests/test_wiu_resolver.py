@@ -10,10 +10,10 @@ from itc_data_frame_decoder.wiu_resolver import (
 class TestApplyHierarchy:
     def test_matching_successes_return_yes(self):
         final = _apply_hierarchy([
-            {"success": "ambiguous", "results": []},
-            {"success": "yes", "results": {"switches": "1", "signals": "3"}},
-            {"success": "yes", "results": {"switches": "1", "signals": "3"}},
-        ])
+            {"success": "ambiguous", "results": [], "data_hex": "5F80"},
+            {"success": "yes", "results": {"switches": "1", "signals": "3"}, "data_hex": "7DEF00"},
+            {"success": "yes", "results": {"switches": "1", "signals": "3"}, "data_hex": "7DEF00"},
+        ], "802")
 
         assert final == {
             "success": "yes",
@@ -24,35 +24,44 @@ class TestApplyHierarchy:
 
     def test_conflicting_successes_return_no(self):
         final = _apply_hierarchy([
-            {"success": "no", "results": []},
-            {"success": "yes", "results": {"switches": "1", "signals": "3"}},
-            {"success": "yes", "results": {"switches": "3", "signals": "5"}},
-        ])
+            {"success": "no", "results": [], "data_hex": "7601"},
+            {"success": "yes", "results": {"switches": "1", "signals": "0"}, "data_hex": "80"},
+            {"success": "yes", "results": {"switches": "3", "signals": "5"}, "data_hex": "67DEF7BC"},
+        ], "076")
 
         assert final == {"success": "no", "switches": "", "signals": "", "has_conflict": "yes"}
 
     def test_ambiguous_without_successes(self):
         final = _apply_hierarchy([
-            {"success": "ambiguous", "results": []},
-            {"success": "no", "results": []},
-        ])
+            {"success": "ambiguous", "results": [], "data_hex": "80"},
+            {"success": "no", "results": [], "data_hex": "7601"},
+        ], "802")
 
         assert final == {"success": "ambiguous", "switches": "", "signals": "", "has_conflict": "no"}
 
     def test_all_failed(self):
         final = _apply_hierarchy([
-            {"success": "no", "results": []},
-        ])
+            {"success": "no", "results": [], "data_hex": "7601"},
+        ], "076")
 
         assert final == {"success": "no", "switches": "", "signals": "", "has_conflict": "no"}
 
     def test_success_ignores_failed_packets_if_successes_agree(self):
         final = _apply_hierarchy([
-            {"success": "no", "results": []},
-            {"success": "yes", "results": {"switches": "1", "signals": "3"}},
-        ])
+            {"success": "no", "results": [], "data_hex": "7601"},
+            {"success": "yes", "results": {"switches": "1", "signals": "3"}, "data_hex": "7DEF00"},
+        ], "802")
 
         assert final == {"success": "yes", "switches": "1", "signals": "3", "has_conflict": "no"}
+
+    def test_conflicting_successes_can_reconcile_in_relaxed_mode(self):
+        final = _apply_hierarchy([
+            {"success": "yes", "results": {"switches": "3", "signals": "5"}, "data_hex": "67CF7F9E"},
+            {"success": "yes", "results": {"switches": "0", "signals": "6"}, "data_hex": "23DEF7BC"},
+            {"success": "yes", "results": {"switches": "0", "signals": "5"}, "data_hex": "03DEF7BC"},
+        ], "076")
+
+        assert final == {"success": "yes", "switches": "3", "signals": "5", "has_conflict": "no"}
 
 
 class TestResolveWius:
@@ -99,6 +108,17 @@ class TestResolveWius:
 
         assert result["707645500005"] == {
             "rr": "076", "success": "no", "switches": "", "signals": "", "has_conflict": "yes",
+        }
+
+    def test_conflicting_successes_can_reconcile_for_wiu(self):
+        result = resolve_wius([
+            {"wiu_id": "707645500005", "rr": "076", "data_hex": "67CF7F9E"},
+            {"wiu_id": "707645500005", "rr": "076", "data_hex": "23DEF7BC"},
+            {"wiu_id": "707645500005", "rr": "076", "data_hex": "03DEF7BC"},
+        ])
+
+        assert result["707645500005"] == {
+            "rr": "076", "success": "yes", "switches": "3", "signals": "5", "has_conflict": "no",
         }
 
 

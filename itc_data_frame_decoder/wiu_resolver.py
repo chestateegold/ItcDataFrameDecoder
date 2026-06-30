@@ -2,7 +2,10 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
-from .switch_signal_decoder import parse_switches_and_signals
+from .switch_signal_decoder import (
+    decode_all_switch_signal_combinations,
+    parse_switches_and_signals,
+)
 
 
 def _load_configured_rrs() -> set[str]:
@@ -11,7 +14,11 @@ def _load_configured_rrs() -> set[str]:
     return {c["rr"] for c in config}
 
 
-def _apply_hierarchy(results: list[dict]) -> dict:
+def _candidate_tuples(candidates: list[dict]) -> set[tuple[str, str]]:
+    return {(candidate["switches"], candidate["signals"]) for candidate in candidates}
+
+
+def _apply_hierarchy(results: list[dict], rr: str) -> dict:
     successful_decodes = {
         (r["results"]["switches"], r["results"]["signals"])
         for r in results
@@ -28,6 +35,28 @@ def _apply_hierarchy(results: list[dict]) -> dict:
         }
 
     if len(successful_decodes) > 1:
+        relaxed_candidate_sets = []
+        for result in results:
+            relaxed_candidates = decode_all_switch_signal_combinations(
+                rr,
+                result["data_hex"],
+                allow_in_motion=True,
+            )
+            relaxed_set = _candidate_tuples(relaxed_candidates)
+            if relaxed_set:
+                relaxed_candidate_sets.append(relaxed_set)
+
+        if relaxed_candidate_sets:
+            common_candidates = set.intersection(*relaxed_candidate_sets)
+            if len(common_candidates) == 1:
+                switches, signals = next(iter(common_candidates))
+                return {
+                    "success": "yes",
+                    "switches": switches,
+                    "signals": signals,
+                    "has_conflict": "no",
+                }
+
         return {"success": "no", "switches": "", "signals": "", "has_conflict": "yes"}
 
     if any(r["success"] == "ambiguous" for r in results):
@@ -50,12 +79,13 @@ def resolve_wius(packets: list[dict]) -> dict[str, dict]:
         entry = wiu_data[wiu_id]
         entry["rr"] = rr
         result = parse_switches_and_signals(rr, data_hex)
+        result["data_hex"] = data_hex
         entry["results"].append(result)
 
     resolved = {}
     for wiu_id, entry in wiu_data.items():
         resolved[wiu_id] = {
             "rr": entry["rr"],
-            **_apply_hierarchy(entry["results"]),
+            **_apply_hierarchy(entry["results"], entry["rr"]),
         }
     return resolved
